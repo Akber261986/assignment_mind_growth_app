@@ -1,8 +1,8 @@
 import streamlit as st
-import pandas as pd
+# import pandas as pd
 import datetime
-from io import BytesIO
-from fpdf import FPDF2 as FPDF
+# from io import BytesIO
+# from fpdf import FPDF2 as FPDF
 
 # Title
 st.title("🌱 Mind Growth App")
@@ -58,39 +58,39 @@ if st.session_state.quotes:
 # 4️⃣ Generate PDF Report
 st.subheader("📥 Download Your Mind Growth Report")
 
-def generate_pdf():
-    pdf = FPDF()
-    pdf.set_auto_page_break(auto=True, margin=15)
-    pdf.add_page()
-    pdf.set_font("Arial", style='B', size=16)
-    pdf.cell(200, 10, "Mind Growth Report", ln=True, align="C")
+# def generate_pdf():
+#     pdf = FPDF()
+#     pdf.set_auto_page_break(auto=True, margin=15)
+#     pdf.add_page()
+#     pdf.set_font("Arial", style='B', size=16)
+#     pdf.cell(200, 10, "Mind Growth Report", ln=True, align="C")
     
-    # Thoughts
-    pdf.set_font("Arial", size=12)
-    pdf.cell(200, 10, "Your Thoughts:", ln=True)
-    for entry in st.session_state.thoughts:
-        pdf.multi_cell(0, 10, f"{entry['date']}: {entry['thought']}")
+#     # Thoughts
+#     pdf.set_font("Arial", size=12)
+#     pdf.cell(200, 10, "Your Thoughts:", ln=True)
+#     for entry in st.session_state.thoughts:
+#         pdf.multi_cell(0, 10, f"{entry['date']}: {entry['thought']}")
     
-    # Mistakes & Lessons
-    pdf.cell(200, 10, "Mistakes & Lessons:", ln=True)
-    for entry in st.session_state.mistakes:
-        pdf.multi_cell(0, 10, f"{entry['date']}: {entry['mistake']} → {entry['lesson']}")
+#     # Mistakes & Lessons
+#     pdf.cell(200, 10, "Mistakes & Lessons:", ln=True)
+#     for entry in st.session_state.mistakes:
+#         pdf.multi_cell(0, 10, f"{entry['date']}: {entry['mistake']} → {entry['lesson']}")
     
-    # Quotes
-    pdf.cell(200, 10, "Favorite Quotes:", ln=True)
-    for q in st.session_state.quotes:
-        pdf.multi_cell(0, 10, f"🌱 {q}")
+#     # Quotes
+#     pdf.cell(200, 10, "Favorite Quotes:", ln=True)
+#     for q in st.session_state.quotes:
+#         pdf.multi_cell(0, 10, f"🌱 {q}")
     
-    # Save to buffer
-    buffer = BytesIO()
-    pdf_bytes = pdf.output(dest='S').encode('latin-1')  # Convert to bytes
-    buffer.write(pdf_bytes)
-    buffer.seek(0)
-    return buffer.getvalue()
+#     # Save to buffer
+#     buffer = BytesIO()
+#     pdf_bytes = pdf.output(dest='S').encode('latin-1')  # Convert to bytes
+#     buffer.write(pdf_bytes)
+#     buffer.seek(0)
+#     return buffer.getvalue()
 
-if st.button("Download PDF Report"):
-    pdf_data = generate_pdf()
-    st.download_button("📩 Click to Download", data=pdf_data, file_name="Mind_Growth_Report.pdf", mime="application/pdf")
+# if st.button("Download PDF Report"):
+#     pdf_data = generate_pdf()
+#     st.download_button("📩 Click to Download", data=pdf_data, file_name="Mind_Growth_Report.pdf", mime="application/pdf")
 
 st.success("🚀 Keep growing and improving!")
 
