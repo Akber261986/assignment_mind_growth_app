@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import datetime
 from io import BytesIO
-from fpdf import FPDF
+from fpdf import FPDF2 as FPDF
 
 # Title
 st.title("🌱 Mind Growth App")
